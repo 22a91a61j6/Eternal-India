@@ -6,7 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const exploreMoreLink = document.getElementById("explore-more");
 
-    exploreMoreLink.href = `../state_pages_inside/${stateName}/${stateName}.html`;
+    function toPascalCaseWithSpaces(str) {
+    return str
+        .toLowerCase() // convert everything to lowercase
+        .split(' ')     // split by space
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // capitalize first letter
+        .join(' ');     // rejoin with space
+    }
+
+
+    exploreMoreLink.href = `../state_pages_inside/${toPascalCaseWithSpaces(stateName)}/${toPascalCaseWithSpaces(stateName)}.html`;
 
     if (!stateName) {
         console.error('State name is missing in the query parameter.');
